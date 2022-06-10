@@ -1,9 +1,9 @@
 """
     @Author: SADANAND PANDEY
-    @Date: 2022-06-10 19:10:00
+    @Date: 2022-06-10 19:20:00
     @Last Modified by: SADANAND PANDEY
-    @Last Modified time: 2022-06-10 19:20:00
-    @Title : Ability to delete existing contact person using their name
+    @Last Modified time: 2022-06-10 19:30:00
+    @Title : Ability to add multiple person to Address Book
 
 """
 
@@ -50,6 +50,19 @@ def add_address_book():
         print("----------------------------------\n")
     except Exception as e:
         print("Please enter valid book name", e)
+
+
+def display_address_book():
+    """
+    Displaying list of addressbook name present
+    Returns: None
+
+    """
+    print("Book name")
+    print("----------")
+    for k in address_book_dict:
+        print(k)
+    print("------------\n")
 
 
 def add_contact():
@@ -183,12 +196,18 @@ if __name__ == '__main__':
         print("Choose below option to perform task")
         print("===================================")
         print("1. Add an address book\n"
+              "2. Display address book\n"
               "2. Add contact\n"
               "3. Display contact\n"
               "4. Edit contact\n"
               "5. Deleting contact\n"
               "0. Exit address book...")
-        choice = {1: add_address_book, 2: add_contact, 3: display_contact, 4: edit_contact, 5: delete_contact}
+        choice = {1: add_address_book,
+                  2: display_address_book,
+                  3: add_contact,
+                  4: display_contact,
+                  5: edit_contact,
+                  6: delete_contact}
         print()
         try:
             user_input = int(input("Enter choice: "))
