@@ -1,9 +1,9 @@
 """
     @Author: SADANAND PANDEY
-    @Date: 2022-06-10 19:00:00
+    @Date: 2022-06-10 19:10:00
     @Last Modified by: SADANAND PANDEY
-    @Last Modified time: 2022-06-10 19:10:00
-    @Title : Ability to edit existing contact person using their name
+    @Last Modified time: 2022-06-10 19:20:00
+    @Title : Ability to delete existing contact person using their name
 
 """
 
@@ -154,6 +154,26 @@ def edit_contact():
         print("Enter valid book name", e)
 
 
+def delete_contact():
+    """
+    Deleting contact person using their first name and before that checking contact is present or not
+    Returns: None
+
+    """
+    try:
+        address_book_name = input("Enter book name to delete contact: ")
+        book_obj = address_book_dict.get(address_book_name)
+        if not book_obj:
+            print("Book name not found")
+            return
+        first_name = input("Enter name to delete: ")
+        book_obj.contact_dict.pop(first_name)
+        print("Contact deleted successfully")
+        print("-------------------------------\n")
+    except Exception as e:
+        print("Please enter valid input", e)
+
+
 if __name__ == '__main__':
     address_book_dict = {}
     print("!! Welcome to address book management system !!")
@@ -166,8 +186,9 @@ if __name__ == '__main__':
               "2. Add contact\n"
               "3. Display contact\n"
               "4. Edit contact\n"
+              "5. Deleting contact\n"
               "0. Exit address book...")
-        choice = {1: add_address_book, 2: add_contact, 3: display_contact, 4: edit_contact}
+        choice = {1: add_address_book, 2: add_contact, 3: display_contact, 4: edit_contact, 5: delete_contact}
         print()
         try:
             user_input = int(input("Enter choice: "))
